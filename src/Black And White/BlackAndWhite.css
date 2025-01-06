@@ -1,0 +1,125 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.BlackAndWhite{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-image: url("../assets/spaceImage.jpg");
+    background-size: cover;
+    padding: 5rem;
+}
+.board {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    width: 36rem;
+    height: 36rem;
+    border-radius: 20px;
+    overflow: hidden;
+    animation-name: board;
+    animation-duration: 50s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.box {
+    height: 16.66%;
+    width: 16.66%;
+    position: relative;
+    border: 1px solid rgba(216, 216, 216, 0.068);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.win{
+    background-image: url("../assets/earthImage.jpg");
+    background-size:190%;
+    background-position: 50% 50%;
+}
+
+.pan0, .pan1, .blackHole, .whiteHole{
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pan0, .pan1{
+    transition-duration: 1s;
+    transition-timing-function: ease-in;
+    height: 4.5rem;
+    width: 4.5rem;
+    border: 5px solid rgb(64, 64, 64);
+    z-index: 1;
+}
+
+.pan0{
+    background-color: rgb(255, 0, 0);
+}
+
+.pan1{
+    background-color: rgb(15, 147, 0);
+}
+
+.blackHole, .whiteHole{
+    height: 80%;
+    width: 80%;
+}
+
+.blackHole{
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.778);
+}
+
+.whiteHole{
+    background-color: rgb(202, 202, 202);
+    box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.778);
+}
+
+.inBlackHole{
+    transform: scale(0);
+    transition-duration: 0.5s;
+    transition-timing-function:linear;
+    border-color: black;
+}
+
+.playerWon{
+    animation-name: winner;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes winner{
+    0%{}
+    50%{
+        box-shadow: 0px 0px 5rem green;
+    }
+    100%{}
+}
+
+@keyframes board{
+    0%{
+        box-shadow: 0px 0px 10px rgba(202, 45, 42, 0.307);
+    }
+    20%{
+        box-shadow: 0px 0px 10px rgba(179, 39, 201, 0.401);
+    }
+    40%{
+        box-shadow: 0px 0px 10px rgba(65, 194, 211, 0.408);
+    }
+    60%{
+        box-shadow: 0px 0px 10px rgba(42, 202, 77, 0.481);
+    }
+    80%{
+        box-shadow: 0px 0px 10px rgba(199, 90, 47, 0.482);
+    }
+    100%{
+        box-shadow: 0px 0px 10px rgba(202, 45, 42, 0.504);
+    }
+}
