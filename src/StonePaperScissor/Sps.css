@@ -6,8 +6,8 @@
 }
 
 .StonePaperScissor{
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center; 
@@ -16,7 +16,7 @@
     color: rgba(255, 255, 255, 0.837);
 }
 
-header{
+.StonePaperScissor header{
     width: 100%;
     padding-bottom: 20px;
     display: flex;
@@ -25,17 +25,17 @@ header{
     border-radius: 20px;
 }
 
-h1{
+.StonePaperScissor h1{
     height: 100px;
     margin: 20px;
 }
 
-h3{
+.StonePaperScissor h3{
     position: absolute;
     top: 100px;
 }
 
-.score{
+.StonePaperScissor .score{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -44,29 +44,29 @@ h3{
     font-weight: 600px;
 }
 
-.user-score{
+.StonePaperScissor .user-score{
     margin-right: 7rem;
 }
 
-.game-score{
+.StonePaperScissor .game-score{
     margin-left: 7rem;
 }
 
-.container{
+.StonePaperScissor .container{
     height: 70%;
-    width: 60%;
+    width: 70%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
 }
 
-.middle-text{
+.StonePaperScissor .middle-text{
     width: 18rem;
     text-align: center;
 }
 
-.user{
+.StonePaperScissor .user{
     height: 100%;
     width: 50%;
     display: flex;
@@ -75,7 +75,7 @@ h3{
     justify-content: space-around;
 }
 
-.game{
+.StonePaperScissor .game{
     height: 100%;
     width: 50%;
     display: flex;
@@ -95,7 +95,7 @@ h3{
     transition-timing-function: ease-in-out;
 }
 
-img{
+.StonePaperScissor img{
     height: 100%;
     width: 100%;
     padding: 5%;
@@ -117,17 +117,19 @@ img{
     left: 50px;
 }
 
-.click{
+.StonePaperScissor .click{
+    transition-duration: 0s;
+    transition-timing-function: ease-out;
     background-color: white;
 }
 
-.win{
+.StonePaperScissor .win{
     animation-name: win;
     animation-duration: 1s;
     animation-timing-function: ease-in;
 }
 
-.loss{
+.StonePaperScissor .loss{
     animation-name: loss;
     animation-duration: 1s;
     animation-timing-function: ease-in;

@@ -59,7 +59,6 @@ export default function(){
                 status = "_";
                 highScore = Math.max(score, highScore);
                 setLevel(currLevel => currLevel + 1);
-                
             }
         }else{
             gameOver = true;

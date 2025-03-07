@@ -1,6 +1,6 @@
 .DiceContainer{
-    height: 8rem;
-    width: 8rem;
+    height: 10rem;
+    width: 10rem;
     background-color: rgba(96, 96, 96, 0.118);   
     display: flex;
     flex-direction: column;
@@ -12,9 +12,17 @@
     border-radius: 10px;
 }
 
-.dice{
+.DiceContainer .dice{
     border-radius: 20px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.819);
+    font-size: 1.5rem;
+    font-weight: 700;
     color: black;
     padding: 2rem;
+    border: none;
+}
+
+.disable{
+    color: transparent !important; 
+    background-color: rgba(255, 255, 255, 0.334) !important;
 }

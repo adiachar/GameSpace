@@ -29,7 +29,7 @@ export default function StonePaperScissor(){
         }else if(gameScore != goal && gameScore > userScore){
             gameInfo = "Trust Your Luck!";
         }
-    }, [gameChoice]);
+    }, [gameScore, userScore]);
 
     function makeChoice(event){
         if(start === true){

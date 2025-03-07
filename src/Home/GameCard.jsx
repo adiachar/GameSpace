@@ -1,32 +1,26 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import CardActionArea from '@mui/material/CardActionArea';
+import { Button } from '@mui/material';
 import "./GameCard.css";
 
-export default function GameCard({img, GameName, GameDescription}){
+export default function GameCard({GameName, GameDescription, img, background, handleClick, scrollLeft, scrollRight}){
     return(
-        <div className="GameCard">
-            <Card sx={{ maxWidth: 345, height: 240, backgroundColor: "grey"}}>
-                <CardActionArea>
-                    <CardMedia
-                    component="img"
-                    height="140"
-                    image={img}
-                    alt="green iguana"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h6" component="div">
-                            {GameName}
-                        </Typography>
-                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                            {GameDescription}
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
+        <div className="GameContainer">
+            <div className="gameContainer" style={{backgroundColor: background, width: "`100vw"}}>
+                <div className="game">
+                    <div className="gameDtl">
+                        <h1>{GameName}</h1>
+                        <p>{GameDescription}</p>
+                    </div>
+                    <div className="image">
+                        <img src={img} alt="" />
+                    </div>
+                </div>   
+                <div className='btns'>
+                    {scrollLeft && <Button variant='outlined' color="light" onClick={scrollLeft} className='btn'>prev</Button>} 
+                    <Button variant='contained' color='light' size='large' onClick={() => handleClick(GameName)} className='play'>Play</Button>
+                    {scrollRight && <Button variant='outlined' color="light" onClick={scrollRight} className='btn'>next</Button>}       
+                </div>
+            </div>
         </div>
     );
 }

@@ -1,15 +1,23 @@
 import { useState, useEffect } from "react";
 import "./BlackAndWhite.css";
 import DiceContainer from "./DiceContainer";
+let vsComputer = prompt("Play with Computer ? (y/n)");
+
+let player1 = "You";
+let player2 = "computer";
+
+if(vsComputer == 'n'){
+    let player1 = prompt("Name of Player 1");
+    let player2 = prompt("Name of player 2");
+}else{
+    vsComputer = true;
+}
+
+const winDest = 36;
+const blackHolePos = [4, 15, 34];
+const whiteHolePos = [17, 25, 2];
 
 export default function BlackAndWhite(){
-
-    let player1 = "player 1";
-    let player2 = "player 2";
-    const winDest = 36;
-    const blackHolePos = [4, 15, 34];
-    const whiteHolePos = [17, 25, 2];
-
     const [randomMove, setRandomMove] = useState(0);
     const [currPosition, setCurrPosition] = useState({player1: 0, player2: 0, p1InBlackHole: false, p2InBlackHole: false});
     const [isPlayer1, setIsPlayer1] = useState(true);
@@ -98,13 +106,13 @@ export default function BlackAndWhite(){
         if(currPosition.player2 == winDest){
             setStart(false);
         }
+        if(!isPlayer1 && vsComputer){
+            setTimeout(makeMove, 1000);
+        }
     }, [isPlayer1]);
-    let red = true;
-
     return(
         <div className="BlackAndWhite">
-
-            <DiceContainer isPlayer1={isPlayer1} randomMove={randomMove} makeMove={makeMove} diceOf={"player1"}/>
+            <DiceContainer isPlayer1={isPlayer1} randomMove={randomMove} makeMove={makeMove} diceOf={"player1"} playerName={player1}/>
             <div className={(currPosition.player1 === winDest || currPosition.player2 === winDest) ? "board playerWon" : "board"}>
                 {[...Array(36)].map((_, idx) =>{
                     const isP1 = (idx + 1) === currPosition.player1;
@@ -112,8 +120,7 @@ export default function BlackAndWhite(){
                     const blackHole = (blackHolePos.includes(idx + 1));
                     const whiteHole = (whiteHolePos.includes(idx + 1));
                     const destination = (idx + 1) === 36;
-                    red = !red;
-                    return (<div key={idx + 1} className={red ? (destination ? "box red win" : "box red"): (destination ? "box green win" : "box green")}>
+                    return (<div key={idx + 1} className={(idx % 2 == 0) ? (destination ? "box red win" : "box red"): (destination ? "box green win" : "box green")}>
                         {isP1 ? <div className={currPosition.p1InBlackHole ? "pan0 inBlackHole" : "pan0"}>{player1}</div>: null}
                         {isP2 ? <div className={currPosition.p2InBlackHole ? "pan1 inBlackHole" : "pan1"}>{player2}</div> : null}
                         {blackHole ? <div className="blackHole"></div> : null}
@@ -121,7 +128,7 @@ export default function BlackAndWhite(){
                     </div>);
                 })}
             </div>
-            <DiceContainer isPlayer1={isPlayer1} randomMove={randomMove} makeMove={makeMove} diceOf={"player2"}/>
+            <DiceContainer isPlayer1={isPlayer1} randomMove={randomMove} makeMove={vsComputer ? null : makeMove} diceOf={"player2"} playerName={player2}/>
         </div>
     );
 }
