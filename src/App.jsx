@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
 import SimonSay from "./SimonSayGame/SimonSay";
-import GoEarth from './GoEarthGame/GoEarth';
+import Earthbound from './EarthboundGame/Earthbound';
 import Home from './Home/Home';
 import StonePaperScissor from './StonePaperScissor/Sps';
 
@@ -12,11 +12,11 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path="/simonSay" element={<SimonSay/>} />
-        <Route path="/goEarth" element={<GoEarth/>} />
+        <Route path="/earthbound" element={<Earthbound/>} />
         <Route path="/stonePaperScissor" element={<StonePaperScissor/>} />
       </Routes>
     </div>
   );
 }
 
-export default App
+export default App;

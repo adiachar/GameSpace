@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ge from "./goEarth.module.css";
+import ge from "./Earthbound.module.css";
 
 const winDest = 16;
 const blackHolePos = [4, 7, 11, 15];
@@ -113,7 +113,7 @@ export default function GoEarth(){
         <div className={ge.BlackAndWhite}>
             <div className={ge.header}>
                 <div className={ge.mainHeader}>
-                    <h1 className={ge.name}>GO EARTH</h1>
+                    <h1 className={ge.name}>Earthbound: Final Flight</h1>
                     <p className={ge.description +" " +"ms-5 me-5"}>
                     Emergency Alert! Aliens are closing in on Earth. You are humanity’s last hope. 
                     Race through the cosmos, navigate deadly obstacles, and reach Earth before they do. 
@@ -121,7 +121,7 @@ export default function GoEarth(){
                     </p>
                 </div>
                 <div className={ge.rightHeader}>
-                    <p className={ge.status +" d-block text-center m-3"}>You can do it!</p>
+                    <p className={ge.status +" d-block text-center m-3"}>Alien's will start moving in</p>
                     <p className={ge.alienTime}>{alienMoveTime}</p>
                 </div>
             </div>
@@ -299,7 +299,7 @@ export default function GoEarth(){
             {!start && 
             (<div className={ge.startGame}>
                 <div className={ge.options}>
-                    <h1 className="m-3">Go Earth : Race for Survival</h1>
+                    <h1 className="m-3">Earthbound: Final Flight</h1>
                     {playerPos === winDest ? (
                     <div className={ge.playerWon}>
                         <h1>You Saved the World! Play again ?</h1>
