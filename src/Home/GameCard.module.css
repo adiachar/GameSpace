@@ -10,7 +10,7 @@
     scroll-snap-align: start;
 }
 
-.GameContainer .gameContainer{
+.gameContainer{
     width: 90vw;
     height: 90vh;
     display: flex;
@@ -21,7 +21,7 @@
     background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.375));   
 }
 
-.GameContainer .game{
+.game{
     height: 70%;
     width: 70%;
     padding: 3rem;
@@ -32,7 +32,7 @@
     border-radius: 3rem;
 }
 
-.GameContainer .gameDtl{
+.gameDtl{
     flex: 1;
     padding-top: 5rem;
     display: flex;
@@ -46,7 +46,7 @@
     }
 }
 
-.GameContainer .image{
+.image{
     flex: 1;
     height: 90%;
     width: 100%;
@@ -56,25 +56,30 @@
     justify-content: center;
 }
 
-.GameContainer .image img{
+.image img{
     height: 100%;
     width: 100%;
     background-size: contain;
+    transform: rotate(90deg)
 }
 
-.GameContainer .btns{
+.btns{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
 
-.GameContainer .btn{
-    margin: 2rem 2rem;
-    color: white;
+.btnPrev, .btnPlay, .btnNext{
+    margin: 2rem 2rem !important;
+    color: white !important;
 }
 
-.GameContainer .play{
-    background-color: rgb(255, 255, 255);
-    color: black;
+.btnPrev, .btnNext{
+    background-color: rgb(209, 29, 29) !important;
+}
+
+.btnPlay{
+    background-color: rgb(255, 255, 255) !important;
+    color: black !important;
 }
