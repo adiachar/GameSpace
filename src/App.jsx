@@ -9,13 +9,12 @@ import StonePaperScissor from './StonePaperScissor/Sps';
 function App() {
   return (
     <div className='App'>
-      <GoEarth/>
-      {/* <Routes>
+      <Routes>
         <Route path='/' element={<Home/>} />
         <Route path="/simonSay" element={<SimonSay/>} />
-        <Route path="/blackAndWhiteHole" element={<GoEarth/>} />
+        <Route path="/goEarth" element={<GoEarth/>} />
         <Route path="/stonePaperScissor" element={<StonePaperScissor/>} />
-      </Routes> */}
+      </Routes>
     </div>
   );
 }

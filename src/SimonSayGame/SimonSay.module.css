@@ -6,8 +6,9 @@
 }
 
 .SimonSay{
-    height: 100vh;
-    width: 100vw;
+    margin: 0px;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,15 +16,46 @@
     color: white;
 }
 
-.SimonSay header{
+.header {
     width: 100%;
-    height: 200px;
+    display: flex;
+}
+
+.left, .right {
+    width: 20%;
+    margin: 1rem;
+
+}
+
+.middle {
+    width: 60%;
+    margin-top: 1rem;
+}
+
+.left, .middle, .right {
+    height: 10rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);    
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    text-align: center;
-    padding: 20px;
+}
+
+.currScoreTitle, .highScoreTitle {
+    margin-top: 1rem;
+}
+
+.currScore, .highScore{
+    color: #00FF48;
+}
+
+.name {
+    margin-top: 1rem;
+}
+
+.level {
+    margin-top: 1rem;
+    color: red;
 }
 
 .SimonSay .container{
@@ -41,35 +73,29 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
-.SimonSay .box{
-    border-radius: 30px;
-    border: 7px solid rgb(61, 61, 61);
+.box {
+    border-radius: 2rem;
 }
 
-.SimonSay .box1{
-    background-color: #f99b45;
+.box1{
+    background-color: #B04646;
+    border: 8px solid #7E2B2B;
 }
 
-.SimonSay .box2{
-    background-color: #d95980;
+.box2{
+    background-color: #6946B0;
+    border: 8px solid #4C2B7E;
 }
 
-.SimonSay .box3{
-    background-color: #819ff9;
+.box3{
+    background-color: #4669B0;
+    border: 8px solid #2B427E;
 }
 
-.SimonSay .box4{
-    background-color: #63aac0;
+.box4{
+    background-color: #B0AE46;
+    border: 8px solid #7E702B;
 }
-
-.SimonSay .box5{
-    background-color: #9cbb47;
-}
-
-.SimonSay .box6{
-    background-color: #43be47;
-}
-
 
 .SimonSay .flash{
     transition-duration: 0.2s;

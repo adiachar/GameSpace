@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./SimonSay.css";
+import ss from "./SimonSay.module.css";
 import { useEffect } from "react";
 
 let userArray = [];
@@ -17,13 +17,12 @@ export default function(){
     const [level, setLevel] = useState(0);
 
     document.addEventListener("keydown", () => {
-        console.log("in keyDown");
-        if(!start){
+        if(!start) {
             start = true;
             status = "Keep Going";
             gameOver = false;
             gameMove();
-        }else{
+        } else {
             status = "continue selecting the box";
         }
     });
@@ -39,7 +38,7 @@ export default function(){
         setTimeout(() => {setCurrBox(null)}, 500);
     }
 
-    function gameMove(event){
+    function gameMove(){
         let random = Math.floor(Math.random() * 4) + 1;
         changeCurrBox(`box${random}`);
         gameArray.push(`box${random}`);
@@ -47,6 +46,10 @@ export default function(){
     }
 
     function userMove(event){
+        if(!start) {
+            return;
+        }
+
         let currBox = event.target.id;
         changeCurrBox(currBox);
         if(currBox == gameArray[idx]){
@@ -56,45 +59,54 @@ export default function(){
                 idx = 0;
                 userArray = [];
                 score = score + 5;
-                status = "_";
                 highScore = Math.max(score, highScore);
                 setLevel(currLevel => currLevel + 1);
             }
-        }else{
+        } else {
             gameOver = true;
-            status = "Game Over";
             idx = 0;
             gameArray = [];
             userArray = [];
             setTimeout(() => {
                 setLevel(0);
                 score = 0;
-                status = "Try Again!";
                 gameOver = false;
+                start = false;
             }, 2000);
         }
     }
 
     function flash(box){
         if(currBox === box){
-            return "flash";
+            return ss.flash;
         }else{
             return "";
         }
     }
  
     return(
-        <div className={`SimonSay ${gameOver && 'gameOver'}`}>
-            <header>
-                <h1>SIMON SAYS GAME</h1>
-                <h4>{status}</h4>
-                <div className="scores"><h2>Score: {score}</h2><h2>Level = {level}</h2><h2>Heigh Score: {highScore}</h2></div>
-            </header>
-            <div className="container">
-                <div className={`box1 box ${flash("box1")}`} id = "box1" onClick={userMove}></div>
-                <div className={`box2 box ${flash("box2")}`} id = "box2" onClick={userMove}></div>
-                <div className={`box3 box ${flash("box3")}`} id = "box3" onClick={userMove}></div>
-                <div className={`box4 box ${flash("box4")}`} id = "box4" onClick={userMove}></div>
+        <div className={`${ss.SimonSay} ${gameOver && ss.gameOver}`}>
+            <div className={ss.header}>
+                <div className={ss.left}>
+                    <h4 className={ss.currScoreTitle}>SCORE</h4>
+                    <h1 className={ss.currScore}>{score}</h1>
+                </div>
+                <div className={ss.middle}>
+                    <h2 className={ss.name}>SIMON SAYS GAME</h2>
+                    <h5 className={ss.level}>{gameOver ? "Game Over" :`LEVEL - ${level}`}</h5>
+                    {level == 0 && <p>Press Any key in the keyboard to start the game!</p>}
+                </div>
+                <div className={ss.right}>
+                    <h4 className={ss.highScoreTitle}>HIGH SCORE</h4>
+                    <h1 className={ss.highScore}>{highScore}</h1>
+                </div>
+            </div>
+         
+            <div className={`${ss.container}`}>
+                <div className={`${ss.box1} ${ss.box} ${flash("box1")}`} id = {`box1`} onClick={userMove}></div>
+                <div className={`${ss.box2} ${ss.box} ${flash("box2")}`} id = {`box2`} onClick={userMove}></div>
+                <div className={`${ss.box3} ${ss.box} ${flash("box3")}`} id = {`box3`} onClick={userMove}></div>
+                <div className={`${ss.box4} ${ss.box} ${flash("box4")}`} id = {`box4`} onClick={userMove}></div>
             </div>
         </div>
     );

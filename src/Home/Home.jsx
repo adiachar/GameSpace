@@ -15,8 +15,8 @@ export default function Home(){
     const navigate = useNavigate();
 
     function handleClick(gameName){
-        if(gameName == "Black And White Hole"){
-            navigate("/blackAndWhiteHole");
+        if(gameName == "GoEarth"){
+            navigate("/goEarth");
         }else if(gameName == "Simon Say Game"){
             navigate("/simonSay");
         }else if(gameName == "Stone Paper Scissor"){
@@ -38,9 +38,9 @@ export default function Home(){
     
     return(
         <div ref={containerRef} className="Home">
-            <GameCard GameName="Black And White Hole" GameDescription={BlackHoleGameDesc} img={BlackHoleGameImg} background={"#499B3B"} handleClick={handleClick} scrollRight={scrollRight}/>
-            <GameCard GameName="Simon Say Game" GameDescription={SimonsayGameDesc} img={SimonSayGameImg} background={"#3B619B"} handleClick={handleClick} scrollLeft={scrollLeft} scrollRight={scrollRight}/>
-            <GameCard GameName="Stone Paper Scissor" GameDescription={StonePaperScissorGameDesc} img={StonePaperScissorGameImg} background={"#979B3B"} handleClick={handleClick} scrollLeft={scrollLeft}/>
+            <GameCard gameName="GoEarth" gameDescription={BlackHoleGameDesc} img={BlackHoleGameImg} background={"#499B3B"} handleClick={handleClick} scrollRight={scrollRight}/>
+            <GameCard gameName="Simon Say Game" gameDescription={SimonsayGameDesc} img={SimonSayGameImg} background={"#3B619B"} handleClick={handleClick} scrollLeft={scrollLeft} scrollRight={scrollRight}/>
+            <GameCard gameName="Stone Paper Scissor" gameDescription={StonePaperScissorGameDesc} img={StonePaperScissorGameImg} background={"#979B3B"} handleClick={handleClick} scrollLeft={scrollLeft}/>
         </div>
     );
 }

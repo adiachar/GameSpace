@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import ge from "./goEarth.module.css";
 
 const winDest = 16;
 const blackHolePos = [4, 7, 11, 15];
 const whiteHolePos = [2, 5, 9, 13];
-let move = false;
 
 export default function GoEarth(){
+    const navigate = useNavigate();
     const [start, setStart] = useState(false);
     const [playerPos, setPlayerPos] = useState(1);
     const [gamePos, setGamePos] = useState(1);
@@ -36,7 +37,7 @@ export default function GoEarth(){
                         }
                         return pos + 1;
                     })
-                }, 2000);
+                }, 1000);
             }, 5000);
         }
     }, [start]);
@@ -56,7 +57,7 @@ export default function GoEarth(){
     }
 
     let exit = () => {
-        return;
+        navigate("/");
     }
 
     function makeMove(){
@@ -81,6 +82,7 @@ export default function GoEarth(){
                 }
 
                 setBoost(true);
+                setCharge(25);
                 reCharge();
                 return pos;
             });
