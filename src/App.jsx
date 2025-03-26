@@ -2,19 +2,20 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
 import SimonSay from "./SimonSayGame/SimonSay";
-import BlackAndWhite from './Black And White/BlackAndWhite';
+import GoEarth from './GoEarthGame/GoEarth';
 import Home from './Home/Home';
 import StonePaperScissor from './StonePaperScissor/Sps';
 
 function App() {
   return (
     <div className='App'>
-      <Routes>
+      <GoEarth/>
+      {/* <Routes>
         <Route path='/' element={<Home/>} />
         <Route path="/simonSay" element={<SimonSay/>} />
-        <Route path="/blackAndWhiteHole" element={<BlackAndWhite/>} />
+        <Route path="/blackAndWhiteHole" element={<GoEarth/>} />
         <Route path="/stonePaperScissor" element={<StonePaperScissor/>} />
-      </Routes>
+      </Routes> */}
     </div>
   );
 }

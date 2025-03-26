@@ -1,0 +1,211 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.BlackAndWhite{
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+}
+
+.mainHeader {
+    min-height: 9rem;
+    width: 80%;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+}
+
+.rightHeader {
+    min-height: 9rem;
+    width: 20%;
+    margin: 1rem 1rem 1rem 0rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+}
+
+.alienTime {
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    color: red;
+}
+
+.name {
+    display: block;
+    text-align: center;
+    color: white;
+}
+
+.description {
+    display: block;
+    color: red;
+}
+
+.status {
+    color: white;
+}
+
+.main {
+    width: 100%;
+    display: flex;
+}
+
+.board {
+    width: 80%;
+    padding: 2% 20% 20% 20%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box {
+    height: 7rem;
+    width: 7rem;
+    margin: 0.5rem;
+    border-radius: 2rem;
+    background-color: rgba(255, 255, 255, 0.189);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+.blackHole, .whiteHole{
+    height: 80%;
+    width: 80%;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 0;
+}
+
+.blackHole{
+    background-color: rgb(0, 0, 0);
+    border: 2px solid red;
+}
+
+.whiteHole{
+    background-color: rgb(202, 202, 202);
+    border: 2px solid green;
+}
+
+.player, .game {
+    height: 40%;
+    width: 90%;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 1;
+
+    animation-name: move;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+}
+
+
+@keyframes move{
+    0% {
+        opacity: 0;
+    }
+}
+
+.player p, .game p {
+    margin: 0px;
+}
+
+.player {
+    background-color: #497DCC;
+    border: 5px solid #21499F;
+
+}
+
+.game {
+    background-color: #CC4949;
+    border: 5px solid #9F2121;
+}
+
+.win {
+    background-color: rgb(52, 185, 52);
+}
+
+
+.startGame {
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    backdrop-filter: blur(10px);
+    z-index: 1;
+}
+
+.options {
+    width: 50%;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.boostContainer {
+    height: 70vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.charge {
+    height: 1rem;
+    width: 10rem;
+    margin: 1rem;
+    background-color: rgb(175, 14, 14);
+}
+
+.boost {
+    height: 10rem;
+    width: 10rem;
+    margin: 1rem;
+    border-radius: 3rem;
+    border: 2px solid rgb(175, 175, 175);
+    background-image: url("../assets/pngtree-boost-clipart-cartoon-colored-space-shuttle-with-orange-flames-vector-png-image_6801040.png");
+    background-size: cover;
+    color: black;
+    font-weight: 900;
+    font-size: 2rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    box-shadow: 2px 5px 0px white;
+
+    &:active {
+        box-shadow: none;
+        transform: translateY(5px);
+    }
+}
+
+.value {
+    background-color: green;
+    height: 90%;
+}
