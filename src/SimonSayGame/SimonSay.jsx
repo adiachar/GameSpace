@@ -21,7 +21,7 @@ export default function(){
             start = true;
             status = "Keep Going";
             gameOver = false;
-            gameMove();
+            setLevel(1);
         } else {
             status = "continue selecting the box";
         }
@@ -29,7 +29,7 @@ export default function(){
 
     useEffect(() =>{
         if(start){
-           setTimeout(() => gameMove(), 1000); 
+           setTimeout(() => gameMove(), 500); 
         }
     }, [level]);
 
@@ -39,10 +39,20 @@ export default function(){
     }
 
     function gameMove(){
+        start = false;
+
         let random = Math.floor(Math.random() * 4) + 1;
-        changeCurrBox(`box${random}`);
         gameArray.push(`box${random}`);
-        console.log(gameArray);
+        let interval = setInterval(() => {
+
+            if(idx === gameArray.length) {
+                idx = 0;
+                start = true;
+                return clearInterval(interval);
+            }
+            changeCurrBox(gameArray[idx++]);
+
+        }, 1000);
     }
 
     function userMove(event){
@@ -52,10 +62,11 @@ export default function(){
 
         let currBox = event.target.id;
         changeCurrBox(currBox);
-        if(currBox == gameArray[idx]){
+       
+        if(currBox === gameArray[idx]){
             userArray.push(currBox);
             idx++;
-            if(idx == gameArray.length){
+            if(idx === gameArray.length){
                 idx = 0;
                 userArray = [];
                 score = score + 5;
@@ -67,11 +78,11 @@ export default function(){
             idx = 0;
             gameArray = [];
             userArray = [];
+            start = false;
+
             setTimeout(() => {
                 setLevel(0);
                 score = 0;
-                gameOver = false;
-                start = false;
             }, 2000);
         }
     }
@@ -94,7 +105,7 @@ export default function(){
                 <div className={ss.middle}>
                     <h2 className={ss.name}>SIMON SAYS GAME</h2>
                     <h5 className={ss.level}>{gameOver ? "Game Over" :`LEVEL - ${level}`}</h5>
-                    {level == 0 && <p>Press Any key in the keyboard to start the game!</p>}
+                    {level === 0 && <p>Press Any key in the keyboard to start the game!</p>}
                 </div>
                 <div className={ss.right}>
                     <h4 className={ss.highScoreTitle}>HIGH SCORE</h4>
