@@ -1,3 +1,4 @@
+import React from 'react';
 import { useRef } from "react";
 import GameCard from "./GameCard";
 import EarthboundImg from "./assets/BlackHole.jpg";
@@ -15,11 +16,11 @@ export default function Home(){
     const navigate = useNavigate();
 
     function handleClick(gameName){
-        if(gameName == "Earthbound: Final Flight"){
+        if(gameName === "Earthbound"){
             navigate("/earthbound");
-        }else if(gameName == "Simon Say Game"){
+        }else if(gameName === "Simon Say Game"){
             navigate("/simonSay");
-        }else if(gameName == "Stone Paper Scissor"){
+        }else if(gameName === "Stone Paper Scissor"){
             navigate("/stonePaperScissor");
         }
     }
@@ -28,19 +29,21 @@ export default function Home(){
         if(containerRef.current){
             containerRef.current.scrollLeft -= 1550;
         }
-    }
+    };
 
     let scrollRight = () => {
         if(containerRef.current){
             containerRef.current.scrollLeft += 1550;
         }
-    }
-    
+    };
+
     return(
-        <div ref={containerRef} className="Home">
-            <GameCard gameName="Earthbound: Final Flight" gameDescription={EarthboundDesc} img={EarthboundImg} background={"#499B3B"} handleClick={handleClick} scrollRight={scrollRight}/>
-            <GameCard gameName="Simon Say Game" gameDescription={SimonsayGameDesc} img={SimonSayGameImg} background={"#3B619B"} handleClick={handleClick} scrollLeft={scrollLeft} scrollRight={scrollRight}/>
-            <GameCard gameName="Stone Paper Scissor" gameDescription={StonePaperScissorGameDesc} img={StonePaperScissorGameImg} background={"#979B3B"} handleClick={handleClick} scrollLeft={scrollLeft}/>
+        <div className="HomeWrapper">
+            <div ref={containerRef} className="Home">
+                <GameCard gameName="Earthbound" gameDescription={EarthboundDesc} img={EarthboundImg} background={"#499B3B"} handleClick={handleClick} />
+                <GameCard gameName="Simon Say Game" gameDescription={SimonsayGameDesc} img={SimonSayGameImg} background={"#3B619B"} handleClick={handleClick} />
+                <GameCard gameName="Stone Paper Scissor" gameDescription={StonePaperScissorGameDesc} img={StonePaperScissorGameImg} background={"#979B3B"} handleClick={handleClick} />
+            </div>
         </div>
     );
 }

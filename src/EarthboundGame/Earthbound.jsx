@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ge from "./Earthbound.module.css";
+import { accordionSummaryClasses } from "@mui/material";
 
 const winDest = 16;
 const blackHolePos = [4, 7, 11, 15];
@@ -309,7 +310,7 @@ export default function GoEarth(){
                         <div className={ge.playerWon}>
                             <h1>Game Over! try again ?</h1>
                         </div> ) : (
-                        <div className="col-12 text-center">
+                        <div className={"col-12 text-center " +ge.gmInfo}>
                             <p className="p-3">Emergency Alert! Aliens are closing in on Earth. You are humanity’s last hope. 
                                 Race through the cosmos, navigate deadly obstacles, and reach Earth before they do. 
                                 The fate of the planet is in your hands!
@@ -319,8 +320,8 @@ export default function GoEarth(){
                         )
                         )}
                     <div className="col-12 d-flex justify-content-around mt-5">
-                        <button onClick={play} className="btn btn-success col-5 p-3">Play</button>
-                        <button onClick={exit} className="btn btn-danger col-5 p-3">Exit</button>
+                        <button onClick={play} className="btn btn-success col-5 p-3 rounded-pill">Play</button>
+                        <button onClick={exit} className="btn btn-danger col-5 p-3 rounded-pill">Exit</button>
                     </div>
                 </div>
             </div>)}  

@@ -12,6 +12,11 @@
     background-color: black;
 }
 
+.gmInfo p{
+    color: black;
+    font-weight: 400;
+}
+
 .header {
     width: 100%;
     display: flex;
@@ -49,7 +54,7 @@
 
 .description {
     display: block;
-    color: red;
+    color: red !important;
 }
 
 .status {
@@ -120,6 +125,7 @@
 @keyframes move{
     0% {
         opacity: 0;
+        transform: translateX(-100%);
     }
 }
 
@@ -165,6 +171,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.options h1 {
+    color: black;
+    font-size: 2rem;
+    margin-bottom: 2rem;
 }
 
 .boostContainer {
