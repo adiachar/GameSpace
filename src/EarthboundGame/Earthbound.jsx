@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import ge from "./Earthbound.module.css";
 import { accordionSummaryClasses } from "@mui/material";
 
-const winDest = 16;
-const blackHolePos = [4, 7, 11, 15];
-const whiteHolePos = [2, 5, 9, 13];
+const winDest = 39;
+const blackHolePos = [4, 7, 11, 15, 17, 21, 30, 35];
+const whiteHolePos = [2, 5, 9, 13, 19, 25, 28, 38];
+let bwIdx = 0;
 
 export default function GoEarth(){
     const navigate = useNavigate();
@@ -20,28 +21,33 @@ export default function GoEarth(){
         if(start) {
             let interval = setInterval(() => {
                 setAlienMoveTime((time) => {
-                    if(time - 1 === 0) {
+                    if(time === 0) {
                         clearInterval(interval);
                         return 0;
                     }
                     return time - 1;
                 });
             }, 1000);
-
-            setTimeout(() => {
-                let interval = setInterval(() => {
-                    setGamePos(pos => {
-                        if(pos == winDest) {
-                            clearInterval(interval);
-                            setStart(false);
-                            return winDest;
-                        }
-                        return pos + 1;
-                    })
-                }, 1000);
-            }, 5000);
         }
     }, [start]);
+
+    useEffect(() => {
+        if(alienMoveTime === 0 && start) {
+            let interval = setInterval(() => {
+                setGamePos((pos) => {
+                    if(pos < winDest) {
+                        return pos + 1;
+                    } else {
+                        clearInterval(interval);
+                        setStart(false);
+                        setGamePos(1);
+                        setPlayerPos(1);
+                        return pos;
+                    }
+                }); 
+            }, 1500);
+        }
+    }, [alienMoveTime]);
 
     useEffect(() => {
         if(playerPos === winDest) {
@@ -76,16 +82,19 @@ export default function GoEarth(){
                 if(pos < destination && pos < winDest) {
                     return pos + 1;
                 }
-                clearInterval(interval);
-                if(blackHolePos.includes(pos)) {
-                    let random = Math.floor(Math.random() * 4);
-                    setPlayerPos(whiteHolePos[random]);
-                }
 
+                clearInterval(interval);
                 setBoost(true);
                 setCharge(25);
                 reCharge();
+
+                if(blackHolePos.includes(pos)) {
+                    let random = Math.floor(Math.random() * whiteHolePos.length);
+                    return whiteHolePos[random];
+                }
+
                 return pos;
+                
             });
         }, 1000);
     }
@@ -111,15 +120,10 @@ export default function GoEarth(){
     }
 
     return(
-        <div className={ge.BlackAndWhite}>
+        <div className={ge.earthBound}>
             <div className={ge.header}>
                 <div className={ge.mainHeader}>
                     <h1 className={ge.name}>Earthbound: Final Flight</h1>
-                    <p className={ge.description +" " +"ms-5 me-5"}>
-                    Emergency Alert! Aliens are closing in on Earth. You are humanity’s last hope. 
-                    Race through the cosmos, navigate deadly obstacles, and reach Earth before they do. 
-                    The fate of the planet is in your hands!
-                    </p>
                 </div>
                 <div className={ge.rightHeader}>
                     <p className={ge.status +" d-block text-center m-3"}>Alien's will start moving in</p>
@@ -129,166 +133,18 @@ export default function GoEarth(){
 
             <div className={ge.main}>
                 <div className={ge.board}>
-                    <div className={`${ge.box} ${ge.win}`}>
-                        {blackHolePos.includes(16) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(16) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 16 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 16 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
-                    <div className={`${ge.box}`}>
-                        {blackHolePos.includes(15) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(15) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 15 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 15 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
-                    <div className={`${ge.box}`}>
-                        {blackHolePos.includes(14) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(14) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 14 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 14 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
-                    <div className={`${ge.box}`}>
-                        {blackHolePos.includes(13) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(13) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 13 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 13 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
-                    <div className={`${ge.box}`}>
-                        {blackHolePos.includes(9) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(9) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 9 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 9 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
-                    <div className={`${ge.box}`}>
-                        {blackHolePos.includes(10) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(10) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 10 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 10 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
-                    <div className={`${ge.box}`}>
-                        {blackHolePos.includes(11) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(11) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 11 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 11 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
-                    <div className={`${ge.box}`}>
-                        {blackHolePos.includes(12) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(12) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 12 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 12 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
-                    <div className={`${ge.box}`}>
-                        {blackHolePos.includes(8) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(8) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 8 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 8 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
-                    <div className={`${ge.box}`}>
-                        {blackHolePos.includes(7) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(7) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 7 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 7 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
-                    <div className={`${ge.box}`}>
-                        {blackHolePos.includes(6) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(6) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 6 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 6 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
-                    <div className={`${ge.box}`}>
-                        {blackHolePos.includes(5) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(5) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 5 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 5 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
-                    <div className={`${ge.box}`}>
-                        {blackHolePos.includes(1) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(1) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 1 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 1 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
-                    <div className={`${ge.box}`}>
-                        {blackHolePos.includes(2) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(2) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 2 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 2 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
-                    <div className={`${ge.box}`}>
-                        {blackHolePos.includes(3) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(3) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 3 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 3 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
-                    <div className={`${ge.box}`}>
-                        {blackHolePos.includes(4) && (<div className={ge.blackHole}></div>)}
-                        {whiteHolePos.includes(4) && (<div className={ge.whiteHole}></div>)}
-                        {playerPos === 4 && (<div className={ge.player}>
-                            <p>You</p>
-                        </div>)}
-                        {gamePos === 4 && (<div className={ge.game}>
-                            <p>Alien</p>
-                        </div>)}
-                    </div>
+                    {Array.from({ length: winDest }, (_, idx) => (
+                        <div className={`${ge.box} ${idx + 1 === winDest && ge.win}`} key={idx}>
+                            {blackHolePos.includes(idx + 1) && (<div className={ge.blackHole}></div>)}
+                            {whiteHolePos.includes(idx + 1) && (<div className={ge.whiteHole}></div>)}
+                            {playerPos === idx + 1 && (<div className={ge.player}>
+                                <p>You</p>
+                            </div>)}
+                            {gamePos === idx + 1 && (<div className={ge.game}>
+                                <p>Alien</p>
+                            </div>)}
+                        </div>
+                    ))}
                 </div>
                 <div className={ge.boostContainer}>
                     <div className={ge.charge}>

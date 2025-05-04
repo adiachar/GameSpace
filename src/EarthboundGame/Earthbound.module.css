@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-.BlackAndWhite{
+.earthBound{
     min-height: 100vh;
     min-width: 100vw;
     display: flex;
@@ -64,18 +64,20 @@
 .main {
     width: 100%;
     display: flex;
+    flex-direction: column;
 }
 
 .board {
-    width: 60%;
-    padding: 2% 5% 20% 15%;
+    width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 .box {
-    height: 7rem;
-    width: 7rem;
+    height: 6rem;
+    width: 6rem;
     margin: 0.5rem;
     border-radius: 2rem;
     background-color: rgba(255, 255, 255, 0.189);
@@ -107,8 +109,8 @@
 }
 
 .player, .game {
-    height: 40%;
-    width: 70%;
+    height: 30%;
+    width: 60%;
     border-radius: 2rem;
     display: flex;
     align-items: center;
@@ -134,12 +136,16 @@
 }
 
 .player {
+    position: absolute;
+    top: 1.5rem;
     background-color: #497DCC;
     border: 5px solid #21499F;
 
 }
 
 .game {
+    position: absolute;
+    bottom: 1.5rem;
     background-color: #CC4949;
     border: 5px solid #9F2121;
 }
@@ -180,18 +186,17 @@
 }
 
 .boostContainer {
-    height: 70vh;
-    width: 40%;
+    width: 100%;
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
 }
 
 .charge {
     height: 1rem;
     width: 10rem;
-    margin: 1rem;
     background-color: rgb(87, 87, 87);
     display: flex;
     align-items: center;
@@ -200,7 +205,7 @@
 .boost {
     height: 10rem;
     width: 10rem;
-    margin: 1rem;
+    margin: 0.5rem;
     border-radius: 3rem;
     border: 2px solid rgb(175, 175, 175);
     background-image: url("../assets/pngtree-boost-clipart-cartoon-colored-space-shuttle-with-orange-flames-vector-png-image_6801040.png");
