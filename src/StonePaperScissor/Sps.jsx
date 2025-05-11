@@ -53,7 +53,7 @@ export default function StonePaperScissor(){
         switch(userChoice){
             case "stone": {
                 if(gameChoice == "paper"){
-                    setMiddleText("store fear paper");
+                    setMiddleText("stone fear paper");
                     setGameScore((currScore) => currScore + 1);
                 }else if(gameChoice == "scissor"){
                     setMiddleText("Stone crushes Scissors");
