@@ -18,7 +18,7 @@ let colLength = 20;
 
 export default function Snake() {
 
-    const [foodPos, setFoodPos] = useState({r: 0, c: 0});
+    const [foodPos, setFoodPos] = useState({r: Math.floor(Math.random() * rowLength), c: Math.floor(Math.random() * colLength)});
     const [snakePos, setSnakePos] = useState([{r: 0, c: 2},{r: 0, c: 1},{r: 0, c: 0}]);
     const [status, setStatus] = useState("User Arrows to Start the game");
 
