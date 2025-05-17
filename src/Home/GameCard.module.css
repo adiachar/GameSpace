@@ -1,27 +1,36 @@
-.GameContainer{
-    height: 100vh;
-    width: 100vw;
+.gameContainer {
+    width: 30rem;
+    height: 50vh; 
+    margin: 2vh auto;
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(16, 16, 16);
-    scroll-snap-align: start;
+    justify-content: space-between;
+    border-radius: 2rem;
+    padding: 2rem; 
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-.gameContainer{
-    width: 90vw;
-    height: 90vh;
-    display: flex;
-    flex-shrink: 0;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.375));   
+.gameContainer:nth-child(1) {
+    background: linear-gradient(135deg, #4e4376, #2b5876);
 }
 
-.game{
+.gameContainer:nth-child(2) {
+    background: linear-gradient(135deg, #355c7d, #6c5b7b);
+}
+
+.gameContainer:nth-child(3) {
+    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+}
+
+.gameContainer:nth-child(4) {
+    background: linear-gradient(135deg, #1d4350, #a43931);
+}
+
+.gameContainer:nth-child(5) {
+    background: linear-gradient(135deg, #232526, #414345);
+}
+
+.game {
     height: 70%;
     width: 70%;
     padding: 3rem;
@@ -32,54 +41,50 @@
     border-radius: 3rem;
 }
 
-.gameDtl{
-    flex: 1;
-    padding-top: 5rem;
+.imageH {
+    height: 220px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    color: white;
-    & p{
-        margin-top: 1rem;
-        line-height: 150%;
-    }
-}
-
-.image{
-    flex: 1;
-    height: 90%;
-    width: 100%;
-    margin: 2rem;
-    display: flex;
-    align-items: center;
     justify-content: center;
+    overflow: hidden; 
+    border-radius: 8px; 
 }
 
-.image img{
+.imageH img {
     height: 100%;
     width: 100%;
+    border-radius: 0;
+    padding: 0px;
     background-size: contain;
     transform: rotate(90deg);
 }
 
-.btns{
+.gameDtl {
+    flex: 1;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gameDtl h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+.btns {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
 }
 
-.btnPrev, .btnPlay, .btnNext{
-    margin: 2rem 2rem !important;
-    color: white !important;
-}
-
-.btnPrev, .btnNext{
-    background-color: rgb(209, 29, 29) !important;
-}
-
-.btnPlay{
+.btnPlay {
     background-color: rgb(255, 255, 255) !important;
     color: black !important;
 }

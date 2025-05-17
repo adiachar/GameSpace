@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header {
+    width: 100%;
+    padding: 1rem;
+    height: 10rem;
+    display: flex;
+}
+
+.left, .center {
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.left {
+    min-width: 5rem;
+    width: 20%;
+
+}
+
+.point {
+    font-size: 3rem;
+    color: rgb(0, 255, 0);
+}
+
+.center {
+    margin-left: 1rem;
+    width: 100%;
+}
+
+.board {
+    width: fit-content; 
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(20, 1rem);
+    grid-template-rows: repeat(20, 1rem);
+
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.food {
+    background-color: red;
+}
+
+.snake {
+    background-color: rgba(0, 255, 0, 0.678);
+}
+
+.btns {
+    min-width: 15rem;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.btnUp, .btnDown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnLR {
+    display: flex;
+    justify-content: space-between;
+}
