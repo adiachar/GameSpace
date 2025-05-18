@@ -5,8 +5,9 @@ import earthboundImg from "./assets/BlackHole.jpg";
 import simonSayGameImg from "./assets/SimonSay.jpg";
 import stonePaperScissorGameImg from "./assets/RockPaperScissor.jpg";
 import snakeGameImg from "./assets/snake.jpg";
+import {motion} from "framer-motion";
 
-import "./Home.css";
+import hc from "./Home.module.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Home(){
@@ -14,8 +15,8 @@ export default function Home(){
     const navigate = useNavigate();
 
     return(
-        <div className="HomeWrapper">
-            <div ref={containerRef} className="Home">
+        <div className={hc.homeWraper}>
+            <div ref={containerRef} className={hc.home}>
                 <GameCard gameName="Earthbound" img={earthboundImg} handleClick={() => navigate("/earthbound")} />
                 <GameCard gameName="Simon Say Game" img={simonSayGameImg} handleClick={() => navigate("/simon-say")} />
                 <GameCard gameName="Stone Paper Scissor" img={stonePaperScissorGameImg} handleClick={() => navigate("/stone-paper-scissor")} />

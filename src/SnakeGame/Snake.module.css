@@ -11,7 +11,7 @@
     display: flex;
 }
 
-.left, .center {
+.left, .center, .right {
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 1rem;
@@ -21,10 +21,9 @@
     align-items: center;
 }
 
-.left {
+.left, .right {
     min-width: 5rem;
     width: 20%;
-
 }
 
 .point {
@@ -33,7 +32,7 @@
 }
 
 .center {
-    margin-left: 1rem;
+    margin: 0 1rem;
     width: 100%;
 }
 
@@ -71,4 +70,24 @@
 .btnLR {
     display: flex;
     justify-content: space-between;
+}
+
+
+@media screen and (max-width: 720px) {
+    .header {
+        font-size: 1rem;
+        max-height: 9rem;
+    }
+
+    .center {
+        font-size: 0.8rem;
+    }
+
+    .left h3, .right h3{
+        font-size: 1rem;
+    }
+
+    .right .range {
+        width: 90%;
+    }
 }

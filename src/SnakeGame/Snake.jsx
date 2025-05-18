@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import ArrowUp from '@mui/icons-material/KeyboardArrowUp';
 import ArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import ArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
@@ -11,7 +11,7 @@ let snakeInterval;
 let foodInterval;
 let isGameOver = false;
 let point = 0;
-let currMovement;
+let currMovement = "right";
 
 let rowLength = 20;
 let colLength = 20;
@@ -21,9 +21,10 @@ export default function Snake() {
     const [foodPos, setFoodPos] = useState({r: Math.floor(Math.random() * rowLength), c: Math.floor(Math.random() * colLength)});
     const [snakePos, setSnakePos] = useState([{r: 0, c: 2},{r: 0, c: 1},{r: 0, c: 0}]);
     const [status, setStatus] = useState("User Arrows to Start the game");
+    const [snakeMoveSpeed, setSnakeMoveSpeed] = useState(100);
+    const snakeMoveSpeedRef = useRef(snakeMoveSpeed);
 
     const handleKeyPress = (currBtn) => {
-
         if (isGameOver === true) {
             point = 0;
             setSnakePos([{r: 0, c: 2},{r: 0, c: 1},{r: 0, c: 0}]);
@@ -44,7 +45,7 @@ export default function Snake() {
                 setSnakePos(sp => {
                     return [{r: sp[0].r, c: ((sp[0].c + 1) % colLength)}, ...sp.slice(0, sp.length - 1)]
                 });
-            }, 100);
+            }, 600 - snakeMoveSpeedRef.current);
 
         } else if (currBtn === "ArrowLeft") {
             if(currMovement === "right") {
@@ -60,7 +61,7 @@ export default function Snake() {
                     }
                     return [{r: sp[0].r, c: ((sp[0].c - 1) % colLength)}, ...sp.slice(0, sp.length - 1)]
                 });
-            }, 100);
+            }, 600 - snakeMoveSpeedRef.current);
 
         } else if (currBtn === "ArrowUp") {
             if(currMovement === "down") {
@@ -76,7 +77,7 @@ export default function Snake() {
                     }
                     return [{r: ((sp[0].r - 1) % rowLength), c: sp[0].c}, ...sp.slice(0, sp.length - 1)]
                 });
-            }, 100);
+            }, 600 - snakeMoveSpeedRef.current);
 
         } else if (currBtn === "ArrowDown") {
             if(currMovement === "up") {
@@ -89,13 +90,13 @@ export default function Snake() {
                 setSnakePos(sp => {
                     return [{r: ((sp[0].r + 1) % rowLength), c: sp[0].c}, ...sp.slice(0, sp.length - 1)]
                 });
-            }, 100);
+            }, 600 - snakeMoveSpeedRef.current);
         }
     }
 
     useEffect(() => {
         window.addEventListener("keydown", (e) => handleKeyPress(e.key));
-
+        createFoodInterval();
         return () => window.removeEventListener("keydown", handleKeyPress);
     }, []);
 
@@ -104,7 +105,7 @@ export default function Snake() {
         clearInterval(foodInterval);
         foodInterval = setInterval(() => {
             setFoodPos(fp => { return {...fp, r: Math.floor(Math.random()*20), c: Math.floor(Math.random()*20)}});
-        }, 10000);        
+        }, 10000 - (snakeMoveSpeedRef.current * 10));       
     }
 
     useEffect(() => {
@@ -128,6 +129,13 @@ export default function Snake() {
         }
     }, [snakePos]);
 
+    useEffect(() => {
+        clearInterval(snakeInterval);
+        clearInterval(foodInterval);
+        snakeMoveSpeedRef.current = snakeMoveSpeed;
+        createFoodInterval();
+    }, [snakeMoveSpeed]);
+
     const isSnakeHere = (row, col, forUi = true) => {
         for (let pos of snakePos) {
             if (pos.r === row && pos.c === col) {
@@ -148,6 +156,18 @@ export default function Snake() {
                 <div className={sc.center}>
                     <h1>Snake</h1>
                     <p>{status}</p>                    
+                </div>
+                <div className={sc.right}>
+                    <h3>Speed</h3>
+                    <input 
+                        className={sc.range}
+                        type="range" 
+                        min="100" 
+                        max="500"
+                        step="50" 
+                        value={snakeMoveSpeed}
+                        onChange={(e) => setSnakeMoveSpeed(e.target.value)}
+                    />
                 </div>
             </div>
             <div className={sc.board}> 
