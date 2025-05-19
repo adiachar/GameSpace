@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import SimonSay from "./simonSay_temp/SimonSay";
-import Earthbound from './Earthbound_temp/Earthbound';
+import SimonSay from "./SimonSay/SimonSay";
+import Earthbound from './Earthbound/Earthbound';
 import Home from "./Home/Home"
-import StonePaperScissor from './StonePaperScissor_temp/Sps';
-import Snake from './snake_temp/Snake';
-import Traceback from './traceback_temp/Traceback';
+import StonePaperScissor from './StonePaperScissor/Sps';
+import Snake from './Snake/Snake';
+import Traceback from './Traceback/Traceback';
 import './App.css';
 
 function App() {
