@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import SimonSay from "./SimonSay/SimonSay";
-import Earthbound from './earthbound/Earthbound';
+import Earthbound from './Earthbound/Earthbound';
 import Home from "./Home/Home"
 import StonePaperScissor from './StonePaperScissor/Sps';
 import Snake from './Snake/Snake';
