@@ -107,8 +107,8 @@
 
 .roundsComponent {
     height: 80%;
-    width: 100%;
-    position: absolute;
+    width: 100vw;
+    position: fixed;
     top: 20%;
     backdrop-filter: blur(20px);
     animation-name: hide;
@@ -116,6 +116,7 @@
     animation-duration: 1s;
     animation-timing-function: ease-in-out;
     z-index: 2;
+    overflow: auto;
 }
 
 @keyframes hide {
@@ -134,26 +135,50 @@
     position: relative;
     overflow: hidden;
     border: 2px solid white;
-    animation-name: hideBorder;
+    animation-name: hide;
     animation-delay: 2s;
-    animation-duration: 1s;
+    animation-duration: 2s;
     animation-timing-function: ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@keyframes hideBorder {
+@keyframes hide {
 
     50% {
         border-color: transparent;
+        color: transparent;
     }
     100% {
         border-color: transparent;
+        color: transparent;
     }
 }
 
-
 .roundsH1 {
-    position: absolute;
-    left: -100px;
+    animation-name: hide;
+    animation-delay: 2s;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+
+.gameInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.gameInfo p {
+    text-align: center;
+}
+
+.btnPlay {
+    width: 10rem;
+    background-color: rgb(255, 255, 255) !important;
+    color: black !important;
 }
 
 @media screen and (max-width: 760px) {
@@ -190,5 +215,9 @@
 
     .box h1 {
         font-size: 1.4rem;
+    }
+
+    .roundsComponent {
+        top: 12%;
     }
 }
