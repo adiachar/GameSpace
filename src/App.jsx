@@ -3,7 +3,7 @@ import './App.css';
 
 import SimonSay from "./simonSay/SimonSay";
 import Earthbound from './earthbound/Earthbound';
-import Home from './home/Home';
+import Home from './home/Home.jsx';
 import StonePaperScissor from './stonePaperScissor/Sps';
 import Snake from './snake/Snake';
 import Traceback from './traceback/Traceback';
