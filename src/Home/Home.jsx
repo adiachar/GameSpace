@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRef } from "react";
 import GameCard from "./GameCard";
 import earthboundImg from "./assets/BlackHole.jpg";
@@ -6,7 +5,6 @@ import simonSayGameImg from "./assets/SimonSay.jpg";
 import stonePaperScissorGameImg from "./assets/RockPaperScissor.jpg";
 import snakeGameImg from "./assets/snake.jpg";
 import traceBackImg from "./assets/WhatsApp Image 2025-05-19 at 19.09.41_17175183.jpg"
-import {motion} from "framer-motion";
 
 import hc from "./Home.module.css";
 import { useNavigate } from "react-router-dom";
