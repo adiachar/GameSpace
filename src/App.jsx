@@ -1,11 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
-import SimonSay from "./SimonSayGame/SimonSay";
-import Earthbound from './EarthboundGame/Earthbound';
-import Home from './Home/Home';
-import StonePaperScissor from './StonePaperScissor/Sps';
-import Snake from './SnakeGame/Snake';
+import SimonSay from "./simonSay/SimonSay";
+import Earthbound from './earthbound/Earthbound';
+import Home from './home/Home';
+import StonePaperScissor from './stonePaperScissor/Sps';
+import Snake from './snake/Snake';
+import Traceback from './traceback/Traceback';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/earthbound" element={<Earthbound/>} />
         <Route path="/stone-paper-scissor" element={<StonePaperScissor/>} />
         <Route path="/snake" element={<Snake/>} />
+        <Route path="/traceback" element={<Traceback/>} />
       </Routes>
     </div>
   );
